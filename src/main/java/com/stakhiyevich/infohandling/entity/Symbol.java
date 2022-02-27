@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Symbol implements TextComponent {
 
-    private TextElementType elementType;
-    private char value;
+    private final TextElementType elementType;
+    private final char value;
 
     public Symbol(char value, TextElementType elementType) {
         this.value = value;

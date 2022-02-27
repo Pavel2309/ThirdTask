@@ -2,11 +2,12 @@ package com.stakhiyevich.infohandling.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TextComposite implements TextComponent {
 
-    private TextElementType elementType;
-    private List<TextComponent> components = new ArrayList<>();
+    private final TextElementType elementType;
+    private final List<TextComponent> components = new ArrayList<>();
 
     public TextComposite(TextElementType elementType) {
         this.elementType = elementType;
@@ -14,8 +15,8 @@ public class TextComposite implements TextComponent {
 
     @Override
     public String convertToString() {
-        //todo convert to string
-        return null;
+        String separator = elementType.getSeparator();
+        return components.stream().map(textComponent -> textComponent.toString() + separator).collect(Collectors.joining());
     }
 
     @Override
