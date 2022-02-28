@@ -18,5 +18,4 @@ public enum TextElementType {
     public String getSeparator() {
         return separator;
     }
-
 }
