@@ -6,8 +6,6 @@ import com.stakhiyevich.infohandling.entity.TextElementType;
 import com.stakhiyevich.infohandling.parser.TextParser;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 import java.util.regex.Pattern;
@@ -15,9 +13,8 @@ import java.util.regex.Pattern;
 
 public class WordParser implements TextParser {
 
-    private static final Logger logger = LogManager.getLogger();
     private static final String WORD_SEPARATOR = "\\s+";
-    private static final String CALCULATION_PATTERN = "\\p{N}+";
+    private static final String CALCULATION_PATTERN = "([0-9]+[\\+\\-\\*\\/]{1}[0-9]+)+([\\+\\-\\*\\/]{1}[0-9]+)*";
 
     private final SymbolParser symbolParser = new SymbolParser();
 
