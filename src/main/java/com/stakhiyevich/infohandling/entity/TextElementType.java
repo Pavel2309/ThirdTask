@@ -5,7 +5,7 @@ public enum TextElementType {
     PARAGRAPH("\n"),
     SENTENCE(""),
     LEXICAL_UNIT("\s"),
-    WORD(""),
+    WORD("\s"),
     LETTER(""),
     SYMBOL("");
 

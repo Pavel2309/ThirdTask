@@ -16,17 +16,19 @@ public class TextComposite implements TextComponent {
     @Override
     public String convertToString() {
         String separator = elementType.getSeparator();
-        return components.stream().map(textComponent -> textComponent.toString() + separator).collect(Collectors.joining());
+        return this.getComponents().stream()
+                .map(textComponent -> textComponent.convertToString() + separator)
+                .collect(Collectors.joining());
     }
 
     @Override
     public boolean add(TextComponent component) {
-        return component.add(component);
+        return components.add(component);
     }
 
     @Override
     public boolean remove(TextComponent component) {
-        return component.remove(component);
+        return components.remove(component);
     }
 
     @Override
