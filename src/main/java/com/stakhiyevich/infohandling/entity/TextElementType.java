@@ -7,6 +7,8 @@ public enum TextElementType {
     LEXICAL_UNIT("\s"),
     WORD("\s"),
     LETTER(""),
+    PUNCTUATION(""),
+    NUMBER(""),
     SYMBOL("");
 
     private final String separator;
