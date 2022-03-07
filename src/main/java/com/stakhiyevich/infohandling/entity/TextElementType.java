@@ -2,6 +2,7 @@ package com.stakhiyevich.infohandling.entity;
 
 public enum TextElementType {
 
+    TEXT(""),
     PARAGRAPH("\n"),
     SENTENCE(""),
     LEXICAL_UNIT("\s"),
@@ -11,7 +12,7 @@ public enum TextElementType {
     NUMBER(""),
     SYMBOL("");
 
-    private final String separator;
+    private String separator;
 
     TextElementType(String separator) {
         this.separator = separator;

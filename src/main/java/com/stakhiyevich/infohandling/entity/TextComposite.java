@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class TextComposite implements TextComponent {
 
-    private final TextElementType elementType;
-    private final List<TextComponent> components = new ArrayList<>();
+    private TextElementType elementType;
+    private List<TextComponent> components = new ArrayList<>();
 
     public TextComposite(TextElementType elementType) {
         this.elementType = elementType;
@@ -38,6 +38,6 @@ public class TextComposite implements TextComponent {
 
     @Override
     public List<TextComponent> getComponents() {
-        return List.copyOf(components);
+        return components;
     }
 }
