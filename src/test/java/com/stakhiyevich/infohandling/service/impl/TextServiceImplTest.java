@@ -38,8 +38,8 @@ public class TextServiceImplTest {
         }
 
         String expected = "It is a established fact that a reader will be of a page when looking at its layout... \n" +
-                "Bye бандерлоги. \n" +
-                "It has survived - not only (five) centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the “Динамо” (Рига) with the release of Letraset sheets.toString() containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker Faclon9 including versions of Lorem Ipsum! \n" +
+                "Bye thelongestwordishereonetwothree бандерлоги. \n" +
+                "It thelongestwordishereonetwothree has survived - not only (five) centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the “Динамо” (Рига) with the release of Letraset sheets.toString() containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker Faclon9 including versions of Lorem Ipsum! \n" +
                 "It is a long a!=b established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Ipsum is that it has a more-or-less normal distribution ob.toString(a?b:c), as opposed to using (Content here), content here's, making it look like readable English? \n";
         String actual = composite.convertToString();
 
@@ -57,12 +57,12 @@ public class TextServiceImplTest {
     public void testRemoveSentencesWithWordsLessThan() {
 
         try {
-            textService.removeSentencesWithWordsLessThan(composite, 3);
+            textService.removeSentencesWithWordsLessThan(composite, 4);
         } catch (ComponentException e) {
             fail("failed to sort composite");
         }
 
-        String expected = "It has survived - not only (five) centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the “Динамо” (Рига) with the release of Letraset sheets.toString() containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker Faclon9 including versions of Lorem Ipsum! \n" +
+        String expected = "It thelongestwordishereonetwothree has survived - not only (five) centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the “Динамо” (Рига) with the release of Letraset sheets.toString() containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker Faclon9 including versions of Lorem Ipsum! \n" +
                 "It is a long a!=b established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Ipsum is that it has a more-or-less normal distribution ob.toString(a?b:c), as opposed to using (Content here), content here's, making it look like readable English? \n" +
                 "It is a established fact that a reader will be of a page when looking at its layout... \n\n";
 
@@ -75,7 +75,7 @@ public class TextServiceImplTest {
     @Test
     public void testCountDuplicateWords() {
         int actual = 0;
-        int expected = 25;
+        int expected = 26;
         try {
             actual = textService.countDuplicateWords(composite);
         } catch (ComponentException e) {
@@ -88,7 +88,7 @@ public class TextServiceImplTest {
     @Test
     public void testCountVowels() {
         int actual = 0;
-        int expected = 241;
+        int expected = 265;
         try {
             actual = textService.countVowels(composite);
         } catch (ComponentException e) {
@@ -100,7 +100,7 @@ public class TextServiceImplTest {
     @Test
     public void testCountConsonants() {
         int actual = 0;
-        int expected = 358;
+        int expected = 396;
         try {
             actual = textService.countConsonants(composite);
         } catch (ComponentException e) {
