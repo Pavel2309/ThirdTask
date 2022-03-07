@@ -29,13 +29,9 @@ public class TextServiceImpl implements TextService {
     @Override
     public List<TextComponent> findSentencesWithLongestWord(TextComposite textComposite) {
 
-        List<TextComponent> sentences = textComposite.getComponents().stream()
-                .flatMap(paragraph -> paragraph.getComponents().stream()).toList();
-
         List<TextComponent> words = textComposite.getComponents().stream()
                 .flatMap(paragraph -> paragraph.getComponents().stream())
                 .flatMap(sentence -> sentence.getComponents().stream()).toList();
-
         long maxLength = 0L;
         for (TextComponent word : words) {
              long currentWordLength = word.getComponents().stream()
@@ -46,6 +42,8 @@ public class TextServiceImpl implements TextService {
             }
         }
 
+        List<TextComponent> sentences = textComposite.getComponents().stream()
+                .flatMap(paragraph -> paragraph.getComponents().stream()).toList();
         List<TextComponent> result = new ArrayList<>();
         for (TextComponent sentence : sentences) {
             for (TextComponent word : sentence.getComponents()) {
@@ -53,7 +51,6 @@ public class TextServiceImpl implements TextService {
                         .filter(symbol -> symbol.getElementType() == TextElementType.LETTER).count();
                 if (currentWordLength == maxLength) {
                     result.add(sentence);
-                    break;
                 }
             }
         }
