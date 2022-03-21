@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class TextComposite implements TextComponent {
 
-    private TextElementType elementType;
-    private List<TextComponent> components = new ArrayList<>();
+    private final TextElementType elementType;
+    private final List<TextComponent> components = new ArrayList<>();
 
     public TextComposite(TextElementType elementType) {
         this.elementType = elementType;
@@ -39,5 +39,32 @@ public class TextComposite implements TextComponent {
     @Override
     public List<TextComponent> getComponents() {
         return components;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TextComposite)) return false;
+
+        TextComposite that = (TextComposite) o;
+
+        if (getElementType() != that.getElementType()) return false;
+        return getComponents() != null ? getComponents().equals(that.getComponents()) : that.getComponents() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getElementType() != null ? getElementType().hashCode() : 0;
+        result = 31 * result + (getComponents() != null ? getComponents().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TextComposite{");
+        sb.append("elementType=").append(elementType);
+        sb.append(", components=").append(components);
+        sb.append('}');
+        return sb.toString();
     }
 }

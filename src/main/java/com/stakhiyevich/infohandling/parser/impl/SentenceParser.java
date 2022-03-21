@@ -17,21 +17,17 @@ public class SentenceParser implements TextParser {
 
     @Override
     public TextComposite parseText(String text) {
-
         TextComposite sentenceComposite = new TextComposite(TextElementType.SENTENCE);
         Pattern pattern = Pattern.compile(SENTENCE_PATTERN);
         Matcher matcher = pattern.matcher(text);
-
         List<String> sentences = new ArrayList<>();
         while (matcher.find()) {
             sentences.add(matcher.group());
         }
-
         for (String sentence : sentences) {
             TextComponent wordComponents = wordParser.parseText(sentence);
             sentenceComposite.add(wordComponents);
         }
-
         return sentenceComposite;
     }
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Symbol implements TextComponent {
 
-    private TextElementType elementType;
-    private char value;
+    private final TextElementType elementType;
+    private final char value;
 
     public Symbol(char value, TextElementType elementType) {
         this.value = value;
@@ -35,5 +35,32 @@ public class Symbol implements TextComponent {
     @Override
     public List<TextComponent> getComponents() {
         throw new UnsupportedOperationException("can't get top children elements for the leaf");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Symbol)) return false;
+
+        Symbol symbol = (Symbol) o;
+
+        if (value != symbol.value) return false;
+        return getElementType() == symbol.getElementType();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getElementType() != null ? getElementType().hashCode() : 0;
+        result = 31 * result + (int) value;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Symbol{");
+        sb.append("elementType=").append(elementType);
+        sb.append(", value=").append(value);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -7,7 +7,6 @@ import com.stakhiyevich.infohandling.exception.ComponentException;
 import java.util.List;
 
 public interface TextService {
-
     void sortParagraphsBySentenceNumber(TextComposite textComposite) throws ComponentException;
 
     List<TextComponent> findSentencesWithLongestWord(TextComposite textComposite);
@@ -19,6 +18,4 @@ public interface TextService {
     int countVowels(TextComposite textComposite) throws ComponentException;
 
     int countConsonants(TextComposite textComposite) throws ComponentException;
-
-
 }

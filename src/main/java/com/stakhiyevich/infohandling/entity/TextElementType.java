@@ -5,14 +5,13 @@ public enum TextElementType {
     TEXT(""),
     PARAGRAPH("\n"),
     SENTENCE(""),
-    LEXICAL_UNIT("\s"),
     WORD("\s"),
     LETTER(""),
     PUNCTUATION(""),
     NUMBER(""),
     SYMBOL("");
 
-    private String separator;
+    private final String separator;
 
     TextElementType(String separator) {
         this.separator = separator;

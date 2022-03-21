@@ -17,11 +17,9 @@ public class SymbolParser implements TextParser {
     public TextComposite parseText(String text) {
         String[] symbols = text.strip().split(SYMBOL_SEPARATOR);
         TextComposite symbolComposite = new TextComposite(TextElementType.SYMBOL);
-
         for (String symbol : symbols) {
             if (!symbol.isBlank()) {
                 TextElementType type;
-
                 if (symbol.matches(NUMBER_PATTERN)) {
                     type = TextElementType.NUMBER;
                 } else if (symbol.matches(PUNCTUATION_PATTERN)) {

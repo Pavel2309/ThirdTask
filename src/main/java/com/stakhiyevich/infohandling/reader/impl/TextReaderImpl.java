@@ -17,16 +17,13 @@ public class TextReaderImpl implements TextReader {
 
     @Override
     public String readText(String textPath) throws ReaderException {
-
         logger.info("trying to read the \"{}\" file", textPath);
-
         ClassLoader classLoader = getClass().getClassLoader();
         URL resource = classLoader.getResource(textPath);
         if (resource == null) {
             logger.error("file {} does not exist", textPath);
             throw new ReaderException("file " + textPath + " does not exist");
         }
-
         String resultText = "";
         try {
             resultText = Files.readString(Paths.get(resource.toURI()));
@@ -36,12 +33,10 @@ public class TextReaderImpl implements TextReader {
         } catch (URISyntaxException e) {
             logger.error("can't read {}", textPath, e);
         }
-
         if (resultText.isEmpty()) {
             logger.error("the file is empty");
             throw new ReaderException("the file is empty");
         }
-
         return resultText;
     }
 }

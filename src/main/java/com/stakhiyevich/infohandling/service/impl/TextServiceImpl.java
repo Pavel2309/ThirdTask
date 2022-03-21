@@ -8,7 +8,9 @@ import com.stakhiyevich.infohandling.service.TextService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class TextServiceImpl implements TextService {
@@ -28,33 +30,30 @@ public class TextServiceImpl implements TextService {
 
     @Override
     public List<TextComponent> findSentencesWithLongestWord(TextComposite textComposite) {
-
         List<TextComponent> words = textComposite.getComponents().stream()
                 .flatMap(paragraph -> paragraph.getComponents().stream())
                 .flatMap(sentence -> sentence.getComponents().stream()).toList();
         long maxLength = 0L;
         for (TextComponent word : words) {
-             long currentWordLength = word.getComponents().stream()
+            long currentWordLength = word.getComponents().stream()
                     .filter(symbol -> symbol.getElementType() == TextElementType.LETTER)
                     .count();
             if (currentWordLength > maxLength) {
                 maxLength = currentWordLength;
             }
         }
-
         List<TextComponent> sentences = textComposite.getComponents().stream()
                 .flatMap(paragraph -> paragraph.getComponents().stream()).toList();
         List<TextComponent> result = new ArrayList<>();
         for (TextComponent sentence : sentences) {
             for (TextComponent word : sentence.getComponents()) {
-                long currentWordLength =  word.getComponents().stream()
+                long currentWordLength = word.getComponents().stream()
                         .filter(symbol -> symbol.getElementType() == TextElementType.LETTER).count();
                 if (currentWordLength == maxLength) {
                     result.add(sentence);
                 }
             }
         }
-
         return result;
     }
 
@@ -74,7 +73,7 @@ public class TextServiceImpl implements TextService {
             logger.error("given component does not have paragraph elements");
             throw new ComponentException("given component does not have paragraph elements");
         }
-        return  (int) textComposite.getComponents().stream()
+        return (int) textComposite.getComponents().stream()
                 .flatMap(paragraph -> paragraph.getComponents().stream())
                 .flatMap(sentence -> sentence.getComponents().stream())
                 .map(TextComponent::convertToString).toList()
@@ -101,5 +100,4 @@ public class TextServiceImpl implements TextService {
                 .filter(letter -> letter.convertToString().matches(pattern))
                 .toList().size();
     }
-
 }

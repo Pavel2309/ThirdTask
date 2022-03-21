@@ -21,20 +21,4 @@ public class ParagraphParser implements TextParser {
         }
         return paragraphComposite;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
